@@ -2,5 +2,5 @@
 
 public class Location
 {
-    
+    public string Position { get; set; }
 }

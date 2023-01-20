@@ -1,6 +1,13 @@
-﻿namespace NetexParser.Models.NeTEx.Frames.Infrastructure;
+﻿using NetexParser.Models.NeTEx.Structures;
 
-public class ActivationPoint
+namespace NetexParser.Models.NeTEx.Frames.Infrastructure;
+
+public class ActivationPoint : DataManagedObject
 {
-    
+
+    public Location Location { get; set; }
+
+    public PrivateCode PrivateCode { get; set; }
+
+    public VersionOfObjectRef TypeOfActivationRef { get; set; }
 }

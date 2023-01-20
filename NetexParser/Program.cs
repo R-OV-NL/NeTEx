@@ -6,6 +6,8 @@ using NetexParser.Models.NeTEx.Frames;
 using NetexParser.Models.NeTEx.Frames.CompositeFrame;
 using NetexParser.Models.NeTEx.Frames.General;
 using NetexParser.Models.NeTEx.Frames.General.Items;
+using NetexParser.Models.NeTEx.Frames.Infrastructure;
+using NetexParser.Models.NeTEx.Frames.Resource;
 using NetexParser.Models.NeTEx.Frames.TimeTable;
 using NetexParser.Models.NeTEx.Frames.TimeTable.Journeys;
 using NetexParser.Models.NeTEx.Frames.TimeTable.Journeys.ServiceJ;
@@ -38,16 +40,23 @@ public class Program
             
 
             
-            cfg.CreateMap<VersionOfObjectRefStructure, VersionOfObjectRef>();
+            cfg.CreateMap<VersionOfObjectRefStructure, VersionOfObjectRef>()
+                .Include<VersionOfObjectRefStructurewithclass, VersionOfObjectRefStructureWithClass>();
+
+            cfg.CreateMap<VersionOfObjectRefStructurewithclass, VersionOfObjectRefStructureWithClass>();
+            
             cfg.CreateMap<SimpleObjectStructure, SimpleObject>();
             cfg.CreateMap<DataManagedObjectStructure, DataManagedObject>()
                 .Include<serviceJourney, ServiceJourney>()
+                .Include<activationPoint, ActivationPoint>()
                 .Include<deadRun, DeadRun>()
                 .Include<valueSet, ValueSet>()
                 .Include<availabilityCondition, AvailabilityCondition>()
                 .Include<serviceJourneyInterchange, ServiceJourneyInterchange>()
                 .Include<DataManagedObjectStructurewithversion, DataManagedObjectStructureWithVersion>()
-                .Include<DataManagedObjectStructurewithstatus, DataManagedObjectStructureWithStatus>();
+                .Include<DataManagedObjectStructurewithstatus, DataManagedObjectStructureWithStatus>()
+                .Include<responsibilitySet, ResponsibilitySet>()
+                .Include<responsibilityRoleAssignment, ResponsibilityRoleAssignment>();
             
             cfg.CreateMap<DataManagedObjectStructurewithversion, DataManagedObjectStructureWithVersion>()
                 .Include<version, Version>();
@@ -63,6 +72,8 @@ public class Program
 
             cfg.CreateMap<PrivateCodeStructure, PrivateCode>();
             
+            cfg.CreateMap<LocationStructure, Location>()
+                .ForMember(x => x.Position, opt => opt.MapFrom(x => x.pos.Value));
             
             /*
              * Frames
@@ -70,9 +81,12 @@ public class Program
                 // General
                 cfg.CreateMap<VersionFrameVersionStructure, Frame>()
                     .Include<generalFrame, GeneralFrame>()
-                    .Include<timetableFrame, TimeTableFrame>();
+                    .Include<timetableFrame, TimeTableFrame>()
+                    .Include<infrastructureFrame, InfrastructureFrame>()
+                    .Include<resourceFrame, ResourceFrame>();
                 
-                cfg.CreateMap<VersionFrameDefaultsStructure, Models.NeTEx.Frames.CompositeFrame.VersionFrameDefaultsStructure>();
+                cfg.CreateMap<VersionFrameDefaultsStructure, Models.NeTEx.Structures.VersionFrameDefaultsStructure>();
+                
                 cfg.CreateMap<version, Version>();
                 cfg.CreateMap<versions, Versions>();
             
@@ -121,6 +135,8 @@ public class Program
                 cfg.CreateMap<tariffZone, TariffZone>();
                 cfg.CreateMap<transportAdministrativeZone, TransportAdministrativeZone>();
                 cfg.CreateMap<valueSet, ValueSet>();
+                cfg.CreateMap<valueSetValues, ValueSetValues>();
+                
                 // Time Table Frame
                 cfg.CreateMap<timetableFrame, TimeTableFrame>();
                 cfg.CreateMap<timetableFrameOperatorView, OperatorView>();
@@ -128,11 +144,24 @@ public class Program
                 cfg.CreateMap<timetableFrameVehicleJourneys, VehicleJourneys>();
                 cfg.CreateMap<serviceJourneyInterchange, ServiceJourneyInterchange>();
                 
-                //Journeys
-                cfg.CreateMap<serviceJourney, ServiceJourney>()
-                    .ForMember(x => x.DynamicAdvertisement, opt => opt.MapFrom(src => src.Dynamic));
+                    //Journeys
+                    cfg.CreateMap<serviceJourney, ServiceJourney>()
+                        .ForMember(x => x.DynamicAdvertisement, opt => opt.MapFrom(src => src.Dynamic));
 
-                cfg.CreateMap<deadRun, DeadRun>();
+                    cfg.CreateMap<deadRun, DeadRun>();
+                
+                // Infrastructure Frame
+                cfg.CreateMap<infrastructureFrame, InfrastructureFrame>();
+                cfg.CreateMap<activationPoint, ActivationPoint>();
+                
+                //Resource Frame
+                cfg.CreateMap<resourceFrame, ResourceFrame>()
+                    .ForMember(x => x.DataSource, opt => opt.MapFrom(src => src.dataSources.DataSource));
+                
+                cfg.CreateMap<dataSource, DataSource>();
+                cfg.CreateMap<responsibilitySet, ResponsibilitySet>();
+                cfg.CreateMap<responsibilityRoleAssignment, ResponsibilityRoleAssignment>();
+                
             /*
              * Enumerations
              */

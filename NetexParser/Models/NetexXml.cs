@@ -2107,7 +2107,7 @@ public partial class pointProjection : DataManagedObjectStructure {
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
 [System.Xml.Serialization.XmlTypeAttribute(TypeName="VersionOfObjectRefStructure-with-class", Namespace="http://www.netex.org.uk/netex")]
-public partial class VersionOfObjectRefStructurewithclass {
+public partial class VersionOfObjectRefStructurewithclass : VersionOfObjectRefStructure {
     
     private string nameOfRefClassField;
     
@@ -2251,6 +2251,7 @@ public abstract partial class DataManagedObjectStructure {
     }
 }
 
+//Done
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
 [System.SerializableAttribute()]
@@ -2284,6 +2285,7 @@ public partial class valueSet : DataManagedObjectStructure {
     }
 }
 
+//TODO: The specific item types are not yet implemented.
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
 [System.SerializableAttribute()]
@@ -5499,6 +5501,7 @@ public partial class scheduledStopPoint : DataManagedObjectStructure {
     }
 }
 
+//Done
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
 [System.SerializableAttribute()]
@@ -5521,6 +5524,7 @@ public partial class LocationStructure {
     }
 }
 
+//Done
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
 [System.SerializableAttribute()]
@@ -5623,6 +5627,7 @@ public partial class timingPoint : DataManagedObjectStructure {
     }
 }
 
+//Done
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
 [System.SerializableAttribute()]
@@ -6341,6 +6346,7 @@ public partial class responsibilityRoleAssignment : DataManagedObjectStructure {
     }
 }
 
+//Done
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
 [System.SerializableAttribute()]
@@ -6782,6 +6788,7 @@ public partial class generalFrameMembers {
     }
 }
 
+// Done
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.8.3928.0")]
 [System.SerializableAttribute()]

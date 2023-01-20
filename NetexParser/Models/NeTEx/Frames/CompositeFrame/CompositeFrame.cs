@@ -1,6 +1,6 @@
 ﻿namespace NetexParser.Models.NeTEx.Frames.CompositeFrame;
 
-public class CompositeFrame : VersionFrameVersionStructure {
+public class CompositeFrame : Frame {
     public MultilingualString Description { get; set; }
     
     public TypeOfFrameRefStructureComposite TypeOfFrameRef { get; set; }

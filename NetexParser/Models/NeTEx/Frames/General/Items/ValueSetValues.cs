@@ -2,5 +2,6 @@
 
 public class ValueSetValues
 {
-    
+    //TODO: This is a stub class definition
+    public object[] Items { get; set; }
 }

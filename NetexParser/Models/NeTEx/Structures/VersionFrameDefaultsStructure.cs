@@ -1,6 +1,4 @@
-﻿using NetexParser.Models.NeTEx.Structures;
-
-namespace NetexParser.Models.NeTEx.Frames.CompositeFrame;
+﻿namespace NetexParser.Models.NeTEx.Structures;
 
 public class VersionFrameDefaultsStructure {
     public VersionFrameDefaultsStructure() {
