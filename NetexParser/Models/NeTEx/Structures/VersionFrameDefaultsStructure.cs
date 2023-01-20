@@ -2,7 +2,7 @@
 
 namespace NetexParser.Models.NeTEx.Frames.CompositeFrame;
 
-public partial class VersionFrameDefaultsStructure {
+public class VersionFrameDefaultsStructure {
     public VersionFrameDefaultsStructure() {
         this.DefaultLocationSystem = "EPSG:28992";
         this.DefaultSystemOfUnits = "SiMetres";
